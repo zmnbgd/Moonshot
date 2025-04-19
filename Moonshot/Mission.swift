@@ -25,11 +25,11 @@ struct Mission: Codable, Identifiable {
     let description: String?
     
     var displayName: String {
-        "Apolo \(id)"
+        "Apollo \(id)"
     }
     
     var image: String {
-        "apolo \(id)"
+        "apollo\(id)"
     }
     
 }
