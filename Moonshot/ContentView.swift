@@ -13,7 +13,7 @@ struct ContentView: View {
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
     let columns = [
-        GridItem(.adaptive(minimum: 200))
+        GridItem(.adaptive(minimum: 150))
         
     ]
     
@@ -33,13 +33,19 @@ struct ContentView: View {
                                 
                                 VStack {
                                     Text(mission.displayName)
-                                        
+                                        .font(.headline)
+                                    
+                                    Text(mission.formattedLaunchDate)
+                                        .font(.caption)
+                                    
                                 }
+                                .frame(maxWidth: .infinity)
                             }
                         }
                     }
                 }
             }
+            .navigationTitle("Moonshot")
         }
     }
 }
