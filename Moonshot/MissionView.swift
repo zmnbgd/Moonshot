@@ -26,15 +26,62 @@ struct MissionView: View {
                     .containerRelativeFrame(.horizontal) { width, axis in
                         width * 0.6
                     }
+                
+                //Divider()
+
+                
                 VStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(height: 2.0)
+                        .foregroundColor(.lightBackground)
+                        .padding(.vertical)
                     Text("Mission HIghlights")
                         .font(.title.bold())
                         .padding(.bottom, 5)
                     
                     Text(mission.description!)
                     
+                    Rectangle()
+                        .frame(height: 2.0)
+                        .foregroundColor(.lightBackground)
+                        .padding(.vertical)
+                    
+                    Text("Crew")
+                        .font(.title.bold())
+                        .padding(.bottom, 5)
+                    
                 }
                 .padding(.horizontal)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(crew, id: \.role) { crewMember in
+                            NavigationLink {
+                                Text("Astronaut details")
+                            } label: {
+                                HStack {
+                                    Image(crewMember.astronaut.id)
+                                        .resizable()
+                                        .frame(width: 125, height: 90)
+                                        .clipShape(.capsule)
+                                        .overlay(
+                                            Capsule()
+                                                .strokeBorder(.white, lineWidth: 3.0)
+                                        )
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(crewMember.astronaut.name)
+                                            .foregroundStyle(.white)
+                                            .font(.headline)
+                                        
+                                        Text(crewMember.role)
+                                            .foregroundStyle(.white.opacity(0.5))
+                                    }
+                                }
+                                .padding(.horizontal)
+                            }
+                        }
+                    }
+                }
             }
             .padding(.bottom)
         }
