@@ -28,6 +28,11 @@ struct MissionView: View {
                     }
                 
                 //Divider()
+                
+                //MARK: - Challenge: 1. Add the launch date to MissionView, below the mission badge. You might choose to format this differently given that more space is available, but it’s down to you.
+                Text(mission.formattedLaunchDate)
+                    .font(.headline)
+                    .foregroundColor(.white.opacity(0.8))
 
                 
                 VStack(alignment: .leading) {
