@@ -43,5 +43,15 @@ struct CrewScrollView: View {
 }
 
 #Preview {
-    CrewScrollView()
+    
+    let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    let mission = missions[0]
+    
+    let crew = mission.crew.map { member in
+        MissionView.CrewMember(role: member.role, astronaut: astronauts[member.name]!)
+    }
+    
+    return CrewScrollView(crew: crew)
+        .preferredColorScheme(.dark)
 }

@@ -36,20 +36,28 @@ struct MissionView: View {
 
                 
                 VStack(alignment: .leading) {
-                    Rectangle()
-                        .frame(height: 2.0)
-                        .foregroundColor(.lightBackground)
-                        .padding(.vertical)
+                    
+//                    Rectangle()
+//                        .frame(height: 2.0)
+//                        .foregroundColor(.lightBackground)
+//                        .padding(.vertical)
+                    
+                    //MARK: - Challenge 2.
+                    CustomDivider()
+                    
                     Text("Mission HIghlights")
                         .font(.title.bold())
                         .padding(.bottom, 5)
                     
                     Text(mission.description!)
                     
-                    Rectangle()
-                        .frame(height: 2.0)
-                        .foregroundColor(.lightBackground)
-                        .padding(.vertical)
+//                    Rectangle()
+//                        .frame(height: 2.0)
+//                        .foregroundColor(.lightBackground)
+//                        .padding(.vertical)
+                    
+                    //MARK: - Challenge 2. 
+                    CustomDivider()
                     
                     Text("Crew")
                         .font(.title.bold())
@@ -57,37 +65,39 @@ struct MissionView: View {
                     
                 }
                 .padding(.horizontal)
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(crew, id: \.role) { crewMember in
-                            NavigationLink {
-                                //Text("Astronaut details")
-                                AstronautView(astronaut: crewMember.astronaut)
-                            } label: {
-                                HStack {
-                                    Image(crewMember.astronaut.id)
-                                        .resizable()
-                                        .frame(width: 125, height: 90)
-                                        .clipShape(.capsule)
-                                        .overlay(
-                                            Capsule()
-                                                .strokeBorder(.white, lineWidth: 3.0)
-                                        )
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(crewMember.astronaut.name)
-                                            .foregroundStyle(.white)
-                                            .font(.headline)
-                                        
-                                        Text(crewMember.role)
-                                            .foregroundStyle(.white.opacity(0.5))
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                    }
-                }
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack {
+//                        ForEach(crew, id: \.role) { crewMember in
+//                            NavigationLink {
+//                                //Text("Astronaut details")
+//                                AstronautView(astronaut: crewMember.astronaut)
+//                            } label: {
+//                                HStack {
+//                                    Image(crewMember.astronaut.id)
+//                                        .resizable()
+//                                        .frame(width: 125, height: 90)
+//                                        .clipShape(.capsule)
+//                                        .overlay(
+//                                            Capsule()
+//                                                .strokeBorder(.white, lineWidth: 3.0)
+//                                        )
+//                                    
+//                                    VStack(alignment: .leading) {
+//                                        Text(crewMember.astronaut.name)
+//                                            .foregroundStyle(.white)
+//                                            .font(.headline)
+//                                        
+//                                        Text(crewMember.role)
+//                                            .foregroundStyle(.white.opacity(0.5))
+//                                    }
+//                                }
+//                                .padding(.horizontal)
+//                            }
+//                        }
+//                    }
+//                }
+                //MARK: - Challenge 2. Extract one or two pieces of view code into their own new SwiftUI views – the horizontal scroll view in MissionView is a great candidate, but if you followed my styling then you could also move the Rectangle dividers out too.
+                CrewScrollView(crew: crew)
             }
             .padding(.bottom)
         }
