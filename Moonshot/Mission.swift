@@ -12,9 +12,10 @@ import Foundation
 //    let role: String
 //}
 
-struct Mission: Codable, Identifiable {
+// MARK: - Project 9. - Challenge 3. Return to project 8 (Moonshot), and upgrade it to use NavigationLink(value:). This means adding Hashable conformance, and thinking carefully how to use navigationDestination()
+struct Mission: Codable, Identifiable, Hashable {
     
-    struct CrewRole: Codable {
+    struct CrewRole: Codable, Hashable {
         let name: String
         let role: String
     }
